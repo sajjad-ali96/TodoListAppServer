@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "nodemon server.js"
+    "debug": "nodemon server.js",
+    "heroku-postbuild": "cd public && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": { "node": "12.18.4" },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
