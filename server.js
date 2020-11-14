@@ -8,7 +8,7 @@ const api = require('./routes/api')
 const app = express();
 app.use(cors())
 
-const STATIC = path.resolve(__dirname, 'public', 'dist');
+const STATIC = path.resolve(__dirname, 'public', 'dist', 'TodoApp');
 const INDEX = path.resolve(STATIC, 'index.html');
 
 app.use(express.static(STATIC));
