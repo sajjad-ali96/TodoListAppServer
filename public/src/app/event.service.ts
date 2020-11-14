@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class EventService {
 
-  private _dashboardUrl = "http://localhost:2000/api/dasboard"
+  private _dashboardUrl = "/api/dasboard"
 
   constructor(private http: HttpClient) { }
 
