@@ -21,12 +21,15 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this._auth.loginUser(this.loginUserData)
       .subscribe(
-        res => this.onSuccess(res),
+        res => {
+          this.onSuccess();
+          localStorage.setItem('token', res.token)
+        }, 
         err => this.onError(err)
       )
   }
 
-  onSuccess(res){
+  onSuccess(){
     this.router.navigate(['dashboard'])
   }
   onError(error){

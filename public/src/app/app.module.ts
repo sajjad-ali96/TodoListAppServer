@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { AuthService } from './auth.service';
 import { EventService } from './event.service';
+import { AuthGuard } from './auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
 ]
 
@@ -38,7 +40,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, EventService],
+  providers: [AuthService, AuthGuard, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
