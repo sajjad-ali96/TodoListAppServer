@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div class="col-12">
+    <h1 class="d-flex py-5 justify-content-center">TODOList</h1>
+    <div class="d-flex py-5 justify-content-center">
+        <div class="col-8 ">
+            <input  class="w-100 input-group-text" placeholder="Type to add in list.." type="text" [(ngModel)]="inputText"/>    
+        </div>
+        <button class="w-100 btn btn-secondary" (click)="addToList()">Add</button>
+    </div>
+    <div class="w-100 d-flex flex-column bd-highlight mb-3 bg-dark">
+        <div class="d-flex justify-content-around py-2 bg-dark text-white" *ngFor="let item of todos; index as i">
+            <div class="col-6 text-left">
+                {{item.text}}
+            </div>
+            <div class="col-6 text-right ">
+                <button class="w-20 mx-2 btn btn-secondary " (click)="editTodoList()">Edit</button>
+                <button class="w-20 mx-2 btn btn-secondary " (click)="deleteTodoList(item._id)">Delete</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

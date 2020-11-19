@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-    let userData = req.body
+    let userData = req.body;
     let user = new UserModel(userData)
     user.save((error, registeredUser) => {
         if (error) {
@@ -42,7 +42,7 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    let userData = req.body
+    let userData = req.body;
 
     UserModel.findOne({ email: userData.email }, (error, user) => {
         if (error) {
@@ -61,7 +61,7 @@ router.post('/login', (req, res) => {
 })
 
 router.post('/addTodo', (req, res) => {
-    let todoData = req.body
+    let todoData = req.body;
     TodoModel.create(todoData, (error, data) => {
         if (error) {
             res.sendStatus(500).send('todo not created')
@@ -72,9 +72,9 @@ router.post('/addTodo', (req, res) => {
     })
 })
 
-router.post('/getTodo', (req, res) => {
-    let query = req.body
-
+router.get('/getTodo', (req, res) => {
+    let query = req.body || {};
+    query.hide = false
     TodoModel.find(query, (error, data) => {
         if (error) {
             res.sendStatus(500).send('todo not found')
@@ -86,8 +86,7 @@ router.post('/getTodo', (req, res) => {
 })
 
 router.post('/updateTodo', (req, res) => {
-    let { id, text } = req.body
-
+    let { id, text } = req.body;
     TodoModel.updateOne({ _id: id }, { text }, (error, data) => {
         if (error) {
             res.sendStatus(500).send('todo not found')
@@ -99,8 +98,7 @@ router.post('/updateTodo', (req, res) => {
 })
 
 router.post('/deleteTodo',(req, res) => {
-    let { id } = req.body
-    
+    let { id } = req.body;
     TodoModel.updateOne({ _id: id }, { hide: true }, (error, data) => {
         if (error) {
             res.sendStatus(500).send('todo not found')
