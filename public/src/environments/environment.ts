@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://localhost:2000',
-  api_url: 'http://localhost:2000/api',
+  base_url: 'https://todolistappcasa.herokuapp.com',
+  api_url: 'https://todolistappcasa.herokuapp.com/api',
 };
 
 /*

@@ -6,12 +6,17 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthService } from './auth.service';
 import { EventService } from './event.service';
 import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from "./token-interceptor.service";
 
 const appRoutes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -40,7 +45,13 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, AuthGuard, EventService],
+  providers: [AuthService, AuthGuard, EventService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
