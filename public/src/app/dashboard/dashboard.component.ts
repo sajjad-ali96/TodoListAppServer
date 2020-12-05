@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
         res => this.onSuccess(res),
         err => this.onError(err)
       )
+      this.inputText = '';
       this.getTodoList();
   }
 
@@ -65,6 +66,6 @@ export class DashboardComponent implements OnInit {
   onError(error){
     console.log(error)
   }
-  
+
 
 }
