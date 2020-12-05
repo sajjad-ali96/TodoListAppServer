@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import {Router} from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
     password:""
   }
   constructor(private _auth: AuthService,
-    private router: Router) { }
+    private router: Router, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +37,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['dashboard'])
   }
   onError(error){
-    console.log(error)
+    this.snackbar.open("Invalid Credentials !!", "close", { duration: 3000 } );
+    // console.log(error)
     // if(error instanceof HttpErrorResponse) {
     //   if(error.status === 401) {
     //     this.router.navigate(['/register'])

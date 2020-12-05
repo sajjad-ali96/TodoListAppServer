@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from "../event.service";
 import {Router} from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,7 +15,7 @@ export class DashboardComponent implements OnInit {
   inputText = '';
 
   constructor(private eventService: EventService,
-    private router: Router) { }
+    private router: Router, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getTodoList()
@@ -58,11 +60,11 @@ export class DashboardComponent implements OnInit {
   }
 
   onSuccess(res){
-    alert("Action Successfull !!")
+    this.snackbar.open("Action Successfull !!", "close", { duration: 3000 } );
   }
   onError(error){
     console.log(error)
   }
-
+  
 
 }

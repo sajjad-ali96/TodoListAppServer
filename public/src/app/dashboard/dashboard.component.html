@@ -9,7 +9,8 @@
     <div class="w-100 d-flex flex-column bd-highlight mb-3 bg-dark">
         <div class="d-flex justify-content-around py-2 bg-dark text-white" *ngFor="let item of todos; index as i">
             <div class="col-6 text-left">
-                {{item.text}}
+                <input  class="w-100 input-group-text" [value]="item.text" type="text" [disabled]="true"/>
+                <!-- {{item.text}} -->
             </div>
             <div class="col-6 text-right ">
                 <button class="w-20 mx-2 btn btn-secondary " (click)="editTodoList()">Edit</button>

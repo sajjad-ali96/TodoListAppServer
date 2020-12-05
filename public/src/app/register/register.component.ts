@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSuccess(){
-    this.router.navigate(['login'])
+    this.router.navigate(['dashboard'])
   }
   onError(error){
     console.log(error)

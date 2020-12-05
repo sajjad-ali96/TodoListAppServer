@@ -7,7 +7,7 @@ import {environment} from '../environments/environment';
 })
 export class EventService {
 
-  url = environment.api_url;
+  url = environment.api_url[1];
   private _dashboardUrl = "dasboard"
   private _todoUrl = "getTodo"
   private _addTodo = "addTodo"

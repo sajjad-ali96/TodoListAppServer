@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {environment} from '../environments/environment';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  url = environment.base_url;
+  url = environment.base_url[1];
   private _registerUrl = "/api/register"
   private _loginUrl = "/api/login"
 
